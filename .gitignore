@@ -25,6 +25,3 @@ package-lock.json
 
 # Logs
 *.log
-
-# Frontend directory
-front-end/
