@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Permission Management - FastAPI RBAC</title>
+    <!-- CoreUI CSS -->
+    <link rel="stylesheet" href="vendors/simplebar/css/simplebar.css">
+    <link rel="stylesheet" href="css/vendors/simplebar.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/examples.css" rel="stylesheet">
+    <script src="js/config.js"></script>
+    <script src="js/color-modes.js"></script>
+  </head>
+  <body>
+    <div id="sidebar-placeholder"></div>
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+      <div id="header-placeholder"></div>
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+          <h1>Permission Management</h1>
+          <button type="button" class="btn btn-primary mb-3" data-coreui-toggle="modal" data-coreui-target="#createPermissionModal">
+            Create New Permission
+          </button>
+
+          <!-- Create Permission Modal -->
+          <div class="modal fade" id="createPermissionModal" tabindex="-1" aria-labelledby="createPermissionModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="createPermissionModalLabel">Create New Permission</h5>
+                  <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="createPermissionForm">
+                    <div class="mb-3">
+                      <label for="newPermissionName" class="form-label">Permission Name</label>
+                      <input type="text" class="form-control" id="newPermissionName" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Permission</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-4">
+            <div class="card-header">Permission List</div>
+            <div class="card-body">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                  </tr>
+                </thead>
+                <tbody id="permissionTableBody">
+                  <!-- Permission rows will be inserted here by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="footer-placeholder"></div>
+    </div>
+    <!-- CoreUI and necessary plugins-->
+    <script src="vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+    <script src="vendors/simplebar/js/simplebar.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/color-modes.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/template_loader.js"></script>
+    <script src="assets/js/permissions.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        loadTemplate('sidebar-placeholder', '_sidebar.html');
+        loadTemplate('header-placeholder', '_header.html');
+        loadTemplate('footer-placeholder', '_footer.html');
+      });
+    </script>
+  </body>
+</html>

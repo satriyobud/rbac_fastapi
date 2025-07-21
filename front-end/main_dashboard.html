@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>FastAPI RBAC Dashboard</title>
+    <!-- CoreUI CSS -->
+    <link rel="stylesheet" href="vendors/simplebar/css/simplebar.css">
+    <link rel="stylesheet" href="css/vendors/simplebar.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/examples.css" rel="stylesheet">
+    <script src="js/config.js"></script>
+    <script src="js/color-modes.js"></script>
+  </head>
+  <body>
+    <div id="sidebar-placeholder"></div>
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+      <div id="header-placeholder"></div>
+      <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+          <h1>Welcome to the Dashboard!</h1>
+          <p>You are logged in.</p>
+          <!-- Content will go here -->
+        </div>
+      </div>
+      <div id="footer-placeholder"></div>
+    </div>
+    <!-- CoreUI and necessary plugins-->
+    <script src="vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+    <script src="vendors/simplebar/js/simplebar.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/color-modes.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/template_loader.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        loadTemplate('sidebar-placeholder', '_sidebar.html');
+        loadTemplate('header-placeholder', '_header.html');
+        loadTemplate('footer-placeholder', '_footer.html');
+      });
+    </script>
+  </body>
+</html>
