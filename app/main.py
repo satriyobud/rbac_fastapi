@@ -1,7 +1,7 @@
 
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from app.api import auth, roles, permissions, admin, audit
+from app.api import auth, admin, roles, permissions, audit, dashboard
 from app.core.rbac import has_permission
 
 app = FastAPI()
@@ -25,7 +25,8 @@ app.include_router(auth.router)
 app.include_router(roles.router)
 app.include_router(permissions.router)
 app.include_router(admin.router)
-app.include_router(audit.router)
+app.include_router(audit.router, tags=["audit"], prefix="/api")
+app.include_router(dashboard.router, tags=["dashboard"], prefix="/api")
 
 @app.get("/", tags=["Root"])
 async def read_root():

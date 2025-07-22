@@ -14,13 +14,16 @@ def get_db() -> Generator:
         db.close()
 
 def get_user_permissions(user: User, db: Session) -> set[str]:
+    print(f"[RBAC Debug] Getting permissions for user: {user.username} (ID: {user.id})")
     permissions = set()
 
     # Permissions from role
     if user.roles:
         for role in user.roles:
+            print(f"[RBAC Debug] User {user.username} has role: {role.name}")
             for permission in role.permissions:
                 permissions.add(permission.name)
+                print(f"[RBAC Debug] Adding permission from role {role.name}: {permission.name}")
 
     # User-specific overrides
     overrides = db.query(UserPermissionOverride).filter(UserPermissionOverride.user_id == user.id).all()
@@ -28,14 +31,18 @@ def get_user_permissions(user: User, db: Session) -> set[str]:
         permission_name = db.query(Permission).filter(Permission.id == override.permission_id).first().name
         if override.has_permission == 1:  # Add permission
             permissions.add(permission_name)
+            print(f"[RBAC Debug] Adding override permission: {permission_name}")
         elif override.has_permission == 0:  # Revoke permission
             if permission_name in permissions:
                 permissions.remove(permission_name)
+                print(f"[RBAC Debug] Revoking override permission: {permission_name}")
+    print(f"[RBAC Debug] Final permissions for {user.username}: {permissions}")
     return permissions
 
 def has_permission(permission_name: str):
     def permission_checker(current_user: User = Depends(get_current_active_user), db: Session = Depends(get_db)):
         user_permissions = get_user_permissions(current_user, db)
+        print(f"[RBAC Debug] Checking permission '{permission_name}' for user {current_user.username}. User has: {user_permissions}")
         if permission_name not in user_permissions:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,

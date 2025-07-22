@@ -23,3 +23,10 @@ async function loadTemplate(elementId, templatePath) {
         console.error(`Could not load template from ${templatePath}:`, error);
     }
 }
+
+async function loadAllTemplatesAndInitialize() {
+    console.log('[TemplateLoader] loadAllTemplatesAndInitialize called.');
+    await loadTemplate('sidebar-placeholder', '_sidebar.html');
+    await loadTemplate('header-placeholder', '_header.html');
+    await loadTemplate('footer-placeholder', '_footer.html');
+}
