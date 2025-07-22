@@ -136,4 +136,4 @@ This project uses Alembic for database migrations.
 
 The frontend for this application is located in a separate repository: [https://github.com/satriyobud/fe_rbac_fastapi](https://github.com/satriyobud/fe_rbac_fastapi)
 
-Please refer to that repository's `README.md` for instructions on how to set up and run the frontend.
+Please refer to that repository's `README.md` for instructions on how to set up and run the frontend. It is recommended to run the frontend on a different port (e.g., `8001`) to avoid conflicts with the backend API running on `8000`.
