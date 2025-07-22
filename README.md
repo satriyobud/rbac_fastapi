@@ -1,6 +1,8 @@
-# FastAPI RBAC Application
+# FastAPI RBAC Backend Application
 
-This project implements a Role-Based Access Control (RBAC) system using FastAPI for the backend API and a simple HTML/CSS/JavaScript frontend. It provides a robust foundation for managing users, roles, and permissions within an application.
+This project implements a Role-Based Access Control (RBAC) system using FastAPI for the backend API. It provides a robust foundation for managing users, roles, and permissions within an application.
+
+**Note:** The frontend for this application has been moved to a separate repository for better organization and independent deployment. You can find the frontend at: [https://github.com/satriyobud/fe_rbac_fastapi](https://github.com/satriyobud/fe_rbac_fastapi)
 
 ## Features
 
@@ -13,6 +15,7 @@ This project implements a Role-Based Access Control (RBAC) system using FastAPI 
 *   **Authentication**: JWT-based authentication for secure API access.
 *   **Audit Logging**: Basic auditing of user actions.
 *   **Database Migrations**: Alembic for database schema management.
+*   **Dashboard Endpoints**: API endpoints to retrieve data for dashboard cards (e.g., total users, total permissions).
 
 ## RBAC Concept
 
@@ -39,7 +42,7 @@ Follow these steps to set up the project locally:
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repository-url>
+    git clone git@github.com:satriyobud/fastapi_rbac.git
     cd fastapi_rbac
     ```
 
@@ -101,9 +104,7 @@ This project uses Alembic for database migrations.
     alembic upgrade head
     ```
 
-## Running the Application
-
-The project consists of a FastAPI backend and a static frontend.
+## Running the Backend Application
 
 1.  **Start the FastAPI Backend:**
     Make sure your virtual environment is activated.
@@ -111,15 +112,6 @@ The project consists of a FastAPI backend and a static frontend.
     uvicorn app.main:app --reload
     ```
     The API will be available at `http://127.0.0.1:8000`.
-
-2.  **Serve the Frontend:**
-    The frontend is a set of static HTML, CSS, and JavaScript files located in the `front-end/` directory. You can serve these files using any static file server. A simple way is to use Python's built-in HTTP server:
-    ```bash
-    # From the project root directory
-    cd front-end
-    python -m http.server 8001
-    ```
-    The frontend will be available at `http://localhost:8001`.
 
 ## Project Structure
 
@@ -131,21 +123,17 @@ The project consists of a FastAPI backend and a static frontend.
 ├── seed.py                  # Script to seed initial data (if exists)
 ├── app/
 │   ├── main.py              # Main FastAPI application
-│   ├── api/                 # API endpoints (admin, audit, auth, permissions, roles)
+│   ├── api/                 # API endpoints (admin, audit, auth, permissions, roles, dashboard)
 │   ├── core/                # Core logic (RBAC, security, audit utilities)
 │   ├── db/                  # Database models and session setup
 │   └── schemas/             # Pydantic models for request/response validation
-├── front-end/
-│   ├── assets/              # Images, custom JS, etc.
-│   ├── css/                 # Stylesheets
-│   ├── js/                  # JavaScript files
-│   ├── vendors/             # Third-party libraries (CoreUI, Simplebar, etc.)
-│   ├── _header.html         # Reusable header partial
-│   ├── _sidebar.html        # Reusable sidebar partial
-│   ├── _footer.html         # Reusable footer partial
-│   ├── index.html           # Login page
-│   ├── main_dashboard.html  # Main dashboard page
-│   ├── permissions.html     # Permission management page
-│   └── users.html           # User management page
 └── migrations/              # Alembic migration scripts
 ```
+
+---
+
+# Frontend Application
+
+The frontend for this application is located in a separate repository: [https://github.com/satriyobud/fe_rbac_fastapi](https://github.com/satriyobud/fe_rbac_fastapi)
+
+Please refer to that repository's `README.md` for instructions on how to set up and run the frontend.
